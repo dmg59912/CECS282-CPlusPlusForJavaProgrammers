@@ -23,5 +23,8 @@
     <ClCompile Include="myDate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="testDate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -3,8 +3,8 @@
 // Project 1 - Solitaire Prime
 // Oct 1, 2019
 
-#ifndef MYDATE.H
-#define MYDATE.H
+#ifndef MYDATE_H
+#define MYDATE_H
 #include <string>
 using namespace std;
 

@@ -9,23 +9,27 @@ using namespace std;
 
 
 int Greg2Julian(int month, int day, int year) {
-	return (day - 32075 + 1461 * (year + 4800 + (month - 14) / 12) / 4 + 367 * (month - 2 -
-		(month / 14) / 12 * 12) / 12 - 3 * ((year + 4900 + (month - 14) / 12) / 100) / 4);
+	return (day - 32075 + 1461 * (year + 4800 + (month - 14) / 12) / 4 + 367 * (month - 2 - (month - 14) / 12 * 12) / 12 - 3 * ((year + 4900 + (month - 14) / 12) / 100) / 4);
 }
 
 
 void Julian2Greg(int JD, int & month, int & day, int & year) {
-	int L, N;
+	int I, J, K, L, N;
+
 	L = JD + 68569;
 	N = 4 * L / 146097;
 	L = L - (146097 * N + 3) / 4;
-	year = 4000 * (L + 1) / 1461001;
-	L = L - 1461 * year / 4 + 31;
-	month = 80 * L / 2447;
-	day = L - 2447 * month / 80;
-	L = month / 11;
-	month = month + 2 - 12 * L;
-	year = 100 * (N - 49) + year + L;
+	I = 4000 * (L + 1) / 1461001;
+	L = L - 1461 * I / 4 + 31;
+	J = 80 * L / 2447;
+	K = L - 2447 * J / 80;
+	L = J / 11;
+	J = J + 2 - 12 * L;
+	I = 100 * (N - 49) + I + L;
+
+	year = I;
+	month = J;
+	day = K;
 }
 
 
@@ -45,7 +49,35 @@ myDate::myDate(int M, int D, int Y) {
 
 
 void myDate::display() {
-	cout << month << " " << day << ", " << year;
+	string monthName;
+	switch (month)
+	{
+	case 1: monthName = "Jan";
+		break;
+	case 2: monthName = "Feb";
+		break;
+	case 3: monthName = "Mar";
+		break;
+	case 4: monthName = "Apr";
+		break;
+	case 5: monthName = "May";
+		break;
+	case 6: monthName = "Jun";
+		break;
+	case 7: monthName = "Jul";
+		break;
+	case 8: monthName = "Aug";
+		break;
+	case 9: monthName = "Sep";
+		break;
+	case 10: monthName = "Oct";
+		break;
+	case 11: monthName = "Nov";
+		break;
+	case 12: monthName = "Dec";
+		break;
+	}
+	cout << monthName << " " << day << ", " << year;
 }
 
 
@@ -82,12 +114,37 @@ int myDate::getYear() {
 }
 
 int myDate::dayOfYear() {
-	return Greg2Julian(month, day, year) - Greg2Julian(1, 1, year);
+	return Greg2Julian(month, day, year) - Greg2Julian(1, 1, year) + 1;
 }
 
 
 string myDate::dayName() {
-
+	int dayOfWeek = (Greg2Julian(month, day, year) - Greg2Julian(5, 11, 1959)) % 7;
+	string nameOfDay = "";
+	switch (dayOfWeek) {
+	case 0:
+		nameOfDay = "Monday";
+		break;
+	case 1:
+		nameOfDay = "Tuesday";
+		break;
+	case 2:
+		nameOfDay = "Wednesday";
+		break;
+	case 3:
+		nameOfDay = "Thusday";
+		break;
+	case 4:
+		nameOfDay = "Friday";
+		break;
+	case 5:
+		nameOfDay = "Satusday";
+		break;
+	case 6:
+		nameOfDay = "Sunday";
+		break;
+	}
+	return nameOfDay;
 }
 
 
