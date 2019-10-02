@@ -42,9 +42,25 @@ myDate::myDate()
 
 
 myDate::myDate(int M, int D, int Y) {
-	month = M;
-	day = D;
-	year = Y;
+	if (M > 0 && M < 13) {
+		if (M == 12) {
+			if (D > 0 && D < 32) {
+				month = M;
+				day = D;
+				year = Y;
+				return;
+			}
+		}
+		else if (D > 0 && D < (Greg2Julian(M + 1, 1, Y) - Greg2Julian(M, 1, Y))) {
+			month = M;
+			day = D;
+			year = Y;
+			return;
+		}
+	}
+	month = 5;
+	day = 11;
+	year = 1959;
 }
 
 
