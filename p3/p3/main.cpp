@@ -37,21 +37,14 @@ int main()
 {
 	int option = 0;
 	Student *p[9];
-	populate(p);
-	cout << "original" << endl;
-	display(p);
 	Student *copy[9];
+
+	populate(p);
 	copyArray(copy, p);
-	cout << "sort" << endl;
-	sortByName(copy);
-	display(copy);
-	cout << "original" << endl;
-	display(p);
 	
-	/*
 	while (option != 7) {
-	    printMeun
-	    cin >> option
+		printMenu();
+		cin >> option;
 		switch (option) {
 		case 1:
 			display(p);
@@ -78,8 +71,7 @@ int main()
 			break;
 		}
 	}
-	*/
-	getchar();
+	getchar(); 
 }
 
 
@@ -92,6 +84,7 @@ void printMenu() {
 	cout << "6) Display list sorted by Home Town" << endl;
 	cout << "7) Exit" << endl;
 }
+
 
 void populate(Student *s[]) {
 	char grade[] = { 'A', 'B', 'C', 'D', 'F' };
