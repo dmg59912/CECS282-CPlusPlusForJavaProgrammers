@@ -43,7 +43,7 @@ int main()
 	Student *copy[9];
 	copyArray(copy, p);
 	cout << "sort" << endl;
-	sortByBirthday(copy);
+	sortByName(copy);
 	display(copy);
 	cout << "original" << endl;
 	display(p);
@@ -129,7 +129,17 @@ void sortByID(Student *s[]) {
 }
 
 
-void sortByName(Student *s[]) {}
+void sortByName(Student *s[]) {
+	for (int i = 0; i < 8; i++) {
+		for (int j = 0; j < 8 - i; j++) {
+			if (strcmp(s[j]->name, s[j + 1]->name) > 0) {
+				Student*temp = s[j];
+				s[j] = s[j + 1];
+				s[j + 1] = temp;
+			}
+		}
+	}
+}
 
 
 void sortByGrade(Student *s[]) {
@@ -156,7 +166,19 @@ void sortByBirthday(Student *s[]) {
 		}
 	}
 }
-void sortByHomeTown(Student *s[]) {}
+
+
+void sortByHomeTown(Student *s[]) {
+	for (int i = 0; i < 8; i++) {
+		for (int j = 0; j < 8 - i; j++) {
+			if (s[j]->homeTown > s[j + 1]->homeTown) {
+				Student*temp = s[j];
+				s[j] = s[j + 1];
+				s[j + 1] = temp;
+			}
+		}
+	}
+}
 
 
 void display(Student *s[]) {
