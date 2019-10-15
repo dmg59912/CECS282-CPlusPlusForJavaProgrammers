@@ -92,9 +92,13 @@ void populate(Student *s[]) {
 	srand(time(NULL));
 	for (int i = 0; i < 9; i++) {
 		s[i] = new Student;
+		myDate birth(1, 1, 1999);
+		int days = myDate(12, 31, 2004).daysBetween(myDate(1, 1, 1999));
+		birth.increaseDate(rand() % days);
+
 		s[i]->ID = rand()% 100000 + 100000;
 		s[i]->grade = grade[rand() % (sizeof(grade) / sizeof(grade[0]))];
-		s[i]->bday = myDate(rand() % 12 + 1, rand() % 28 + 1, rand() % 4+ 2000);
+		s[i]->bday = birth;
 		s[i]->homeTown = city[i];
 	}
 	strncpy_s(s[0]->name, "Roronoa Zoro", sizeof(s[0]->name) - 1);
