@@ -23,11 +23,11 @@ struct Student
 
 
 void populate(Student *s[]);
-void sortByID(Student);
-void sortByName(Student);
-void sortByGrade(Student);
-void sortByBirthday(Student);
-void sortByHomeTown(Student);
+void sortByID(Student *s[]);
+void sortByName(Student *s[]);
+void sortByGrade(Student *s[]);
+void sortByBirthday(Student *s[]);
+void sortByHomeTown(Student *s[]);
 void display(Student *s[]);
 void copyArray(Student *d[], Student *s[]);
 void printMenu();
@@ -38,13 +38,17 @@ int main()
 	int option = 0;
 	Student *p[9];
 	populate(p);
+	cout << "original" << endl;
 	display(p);
 	Student *copy[9];
 	copyArray(copy, p);
+	cout << "sort" << endl;
+	sortByBirthday(copy);
 	display(copy);
-	/*
+	cout << "original" << endl;
+	display(p);
 	
-
+	/*
 	while (option != 7) {
 	    printMeun
 	    cin >> option
@@ -112,11 +116,47 @@ void populate(Student *s[]) {
 }
 
 
-void sortByID(Student) {}
-void sortByName(Student) {}
-void sortByGrade(Student) {}
-void sortByBirthday(Student) {}
-void sortByHomeTown(Student) {}
+void sortByID(Student *s[]) {
+	for (int i = 0; i < 8; i++) {
+		for (int j = 0; j < 8 - i; j++) {
+			if (s[j]->ID > s[j + 1]->ID) {
+				Student*temp = s[j];
+				s[j] = s[j + 1];
+				s[j + 1] = temp;
+			}
+		}
+	}
+}
+
+
+void sortByName(Student *s[]) {}
+
+
+void sortByGrade(Student *s[]) {
+	for (int i = 0; i < 8; i++) {
+		for (int j = 0; j < 8 - i; j++) {
+			if (s[j]->grade > s[j + 1]->grade) {
+				Student*temp = s[j];
+				s[j] = s[j + 1];
+				s[j + 1] = temp;
+			}
+		}
+	}
+}
+
+
+void sortByBirthday(Student *s[]) {
+	for (int i = 0; i < 8; i++) {
+		for (int j = 0; j < 8 - i; j++) {
+			if (s[j]->bday.dayOfYear() > s[j + 1]->bday.dayOfYear()) {
+				Student*temp = s[j];
+				s[j] = s[j + 1];
+				s[j + 1] = temp;
+			}
+		}
+	}
+}
+void sortByHomeTown(Student *s[]) {}
 
 
 void display(Student *s[]) {
