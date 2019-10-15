@@ -1,7 +1,7 @@
 // Qianli Li
 // CECS 282-05
-// Project 1 - Solitaire Prime
-// Oct 1, 2019
+// Project 3 - Structs and Pointers
+// Oct 15, 2019
 
 #include "myDate.h"
 #include <iostream>
@@ -150,9 +150,36 @@ string myDate::dayName() {
 
 string myDate::formatDate() {
 	string date = "";
-	date += month;
-	date += "/";
-	date += day;
-	date += "/";
-	date += year;
+	switch (month)
+	{
+	case 1: date += "January";
+		break;
+	case 2: date += "February";
+		break;
+	case 3: date += "March";
+		break;
+	case 4: date += "April";
+		break;
+	case 5: date += "May";
+		break;
+	case 6: date += "June";
+		break;
+	case 7: date += "July";
+		break;
+	case 8: date += "August";
+		break;
+	case 9: date += "September";
+		break;
+	case 10: date += "October";
+		break;
+	case 11: date += "November";
+		break;
+	case 12: date += "December";
+		break;
+	}
+	date += " ";
+	date += to_string(day);
+	date += ", ";
+	date += to_string(year);
+	return date;
 }

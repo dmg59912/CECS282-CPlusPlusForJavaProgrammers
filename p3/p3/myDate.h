@@ -1,7 +1,7 @@
 // Qianli Li
 // CECS 282-05
-// Project 1 - Solitaire Prime
-// Oct 1, 2019
+// Project 3 - Structs and Pointers
+// Oct 15, 2019
 
 #ifndef MYDATE_H
 #define MYDATE_H
