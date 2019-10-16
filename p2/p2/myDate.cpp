@@ -1,6 +1,6 @@
 // Qianli Li
 // CECS 282-05
-// Project 1 - Solitaire Prime
+// Project 2 - myDate
 // Oct 1, 2019
 
 #include "myDate.h"
