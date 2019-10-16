@@ -70,19 +70,21 @@ int main()
 			display(copy);
 			break;
 		}
+		cout << endl;
 	}
 	getchar(); 
+	getchar();
 }
 
 
 void printMenu() {
-	cout << endl << "1) Display original list" << endl;
+	cout << "1) Display original list" << endl;
 	cout << "2) Display list sorted by Student ID" << endl;
 	cout << "3) Display list sorted by Name" << endl;
 	cout << "4) Display list sorted by Grade" << endl;
 	cout << "5) Display list sorted by Birthday" << endl;
 	cout << "6) Display list sorted by Home Town" << endl;
-	cout << "7) Exit" << endl;
+	cout << "7) Exit" << endl << endl;
 }
 
 
@@ -155,7 +157,7 @@ void sortByGrade(Student *s[]) {
 void sortByBirthday(Student *s[]) {
 	for (int i = 0; i < 8; i++) {
 		for (int j = 0; j < 8 - i; j++) {
-			if (s[j]->bday.dayOfYear() > s[j + 1]->bday.dayOfYear()) {
+			if (s[j]->bday.daysBetween(s[j + 1]->bday) > 0 ) {
 				Student*temp = s[j];
 				s[j] = s[j + 1];
 				s[j + 1] = temp;

@@ -92,10 +92,7 @@ void myDate::decreaseDate(int N) {
 
 
 int myDate::daysBetween(myDate D) {
-	if (Greg2Julian(month, day, year) > Greg2Julian(D.getMonth(), D.getDay(), D.getYear())) {
-		return Greg2Julian(month, day, year) - Greg2Julian(D.getMonth(), D.getDay(), D.getYear());
-	}
-	return Greg2Julian(D.getMonth(), D.getDay(), D.getYear()) - Greg2Julian(month, day, year);
+	return Greg2Julian(month, day, year) - Greg2Julian(D.getMonth(), D.getDay(), D.getYear());
 }
 
 
