@@ -8,6 +8,7 @@ int goldRabbits(int);
 BigInt goldRabbits(BigInt);
 void pause() { cout << "press Enter to continue..."; getchar(); }
 
+
 int main() {
 	BigInt B1("123456789123456789123456789123456789");
 	BigInt B2(B1);
@@ -20,11 +21,10 @@ int main() {
 	pause();
 	
 	// for (int i = 0; i <= 3000; i++) 
-	 for (BigInt i = 0; i <= 100; i++)
-	 {
+	for (BigInt i = 0; i <= 3000; i++)
+	{
 		cout << "\ngoldRabbits(" << i << ") = " << goldRabbits(i);
-	 }
-	
+	}
 	pause();
 
 	cout << "\nThis is the value of goldRabbits(3000)\n\n";
@@ -56,6 +56,4 @@ BigInt goldRabbits(BigInt bInt) {
 		storage[bInt] = temp;
 		return temp;
 	}
-
-
 }

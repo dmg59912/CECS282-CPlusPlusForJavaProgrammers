@@ -5,7 +5,7 @@
 
 #include "BigInt.h"
 #include<iostream>
-#include <iomanip>
+#include <math.h>
 #include<vector>
 using namespace std;
 
@@ -136,8 +136,18 @@ BigInt BigInt::operator--(int x) {
 ostream& operator<<(ostream& out, const BigInt& bInt) {
 	vector<char>::const_reverse_iterator rit;
 	rit = bInt.num.rbegin();
-	while (rit != bInt.num.rend()) {
-		out << (int)*rit++;
+	int length = bInt.num.size();
+	if (length <= 12) {
+		while (rit != bInt.num.rend()) {
+			out << (int)*rit++;
+		}
+	}
+	else {
+		out << (int)*rit++ << ".";
+		for (int i = 1; i < 12 - length/10; i++) {
+			out << (int)*rit++;
+		}
+		out << "e" << length;
 	}
 	return out;
 }
